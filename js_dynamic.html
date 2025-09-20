@@ -53,10 +53,6 @@
         const deleteBtn = document.getElementById("deleteBtn");
         const list = document.getElementById("list");
 
-        input.addEventListener("mousedown", () => {
-            input.style.borderBlockColor= "lightblue"; 
-        })
-
         addBtn.addEventListener("click", () =>{
             const items = input.value
             .split(",")                   // , 기준으로 잘라서 배열
