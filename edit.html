@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>일정 수정</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+  <div class="container">
+    <h2 class="mb-4 text-primary">일정 수정</h2>
+
+    <!-- 수정 -->
+    <form>
+      <div class="mb-3">
+        <label for="title" class="form-label">제목</label>
+        <input type="text" id="title" class="form-control" value="(할일) 거래처 미팅" required>
+      </div>
+
+      <div class="mb-3">
+        <input type="date" id="date" name="date" required>
+                            <input type="time" id="time" name="time" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="desc" class="form-label">내용</label>
+        <textarea id="desc" class="form-control" rows="3" required>회사 거래처와 3분기 성과 관련 미팅</textarea>
+      </div>
+
+      <div class="mb-3">
+        <select id="todolist" name="todolist" required>
+            <option value="zoom">zoom</option>
+            <option value="no-offline">no-offline</option>
+            <option value="meet">meet</option>
+          </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">저장</button>
+      <a href="index.html" class="btn btn-secondary">취소</a>
+    </form>
+  </div>
+
+  <script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+      const confirmEdit = confirm("일정을 수정할까요?");
+      if (!confirmEdit) {
+        event.preventDefault(); // 취소하면 저장 안 됨
+      }
+    });
+  </script>
+</body>
+</html>

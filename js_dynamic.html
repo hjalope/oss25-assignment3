@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web Page</title>
+
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 6px;
+            font-size: 16px;
+            width: 250px;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 5px;
+            cursor: pointer;
+            border: none; /* 이게 필요할까? */
+            border-radius: 4px;
+            color: white;
+        }
+        #addBtn{
+            background-color: blue;
+        }
+        #deleteBtn{
+            background-color: green;
+        }
+        ul {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+    <h1>Dynamic Web page</h1>
+    <input type="text" id="inputText" placeholder="write any words">
+    <button id="addBtn">추가</button>
+    <button id="deleteBtn">삭제</button>
+
+    <ul id="list"></ul>
+
+    <script>
+        window.onload = function() {
+        const input = document.getElementById("inputText");
+        const addBtn = document.getElementById("addBtn");
+        const deleteBtn = document.getElementById("deleteBtn");
+        const list = document.getElementById("list");
+
+        input.addEventListener("mousedown", () => {
+            input.style.borderBlockColor= "lightblue"; 
+        })
+
+        addBtn.addEventListener("click", () =>{
+            const items = input.value
+            .split(",")                   // , 기준으로 잘라서 배열
+            .map(item => item.trim())     // 앞뒤 공백 제거
+            .filter(item => item !== ""); // 빈 문자열("") 제외
+                items.forEach(item => {
+                const li = document.createElement("li"); //ul안에 li로 추가
+                li.textContent = item;
+                list.appendChild(li); //appendchild로 추가
+            });
+            input.value = ""; //추가 이후에 칸에 빈칸 
+        });
+        deleteBtn.addEventListener("click", () => {
+            list.innerHTML = ""; //delete 후에 li 초기화
+        });
+    };
+    </script>
+</body>
+</html>
